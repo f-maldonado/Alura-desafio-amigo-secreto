@@ -14,6 +14,8 @@ function agregarAmigo(){
         listarAmigos(amigos)
         // limpiar caja input
         document.getElementById('amigo').value = ''
+        // se habilita el boton de sortear
+        document.getElementById('draw-button').removeAttribute('disabled')
     }
     return
 }
@@ -39,13 +41,14 @@ function listarAmigos(lista){
 }
 
 function sortearAmigo(lista){
-    if (lista.length > 0){
-        let indice = Math.floor(Math.random() * lista.length)
-        console.log(amigos[indice])
-        let listaSorteo = document.getElementById('resultado')
-        let itemSorteo = document.createElement('li')
-        itemSorteo.innerHTML = amigos[indice]
-        listaSorteo.append(itemSorteo)
-    } 
+    // La verificacion de lista (amigos) vacia, se realiza con la habilitacion del boton "Sortear amigo" en la funcion agregarAmigo()
+    let indice = Math.floor(Math.random() * lista.length)
+    //console.log(amigos[indice])
+    let listaSorteo = document.getElementById('resultado')
+    let itemSorteo = document.createElement('li')
+    itemSorteo.innerHTML = amigos[indice]
+    listaSorteo.append(itemSorteo)
+    // se desabilita el boton "Sortear amigo" para que solo sea uno sorteo por lista
+    document.getElementById('draw-button').setAttribute('disabled', 'true')
     return
 }
